@@ -28,12 +28,13 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
     this.onSubmitCallback,
     required Product product,
   }): super(
+    // Un producto nuevo empieza con los campos sin tocar (pure) para no mostrar errores al entrar
     ProductFormState(
       id: product.id,
-      title: Title.dirty(product.title),
-      slug: Slug.dirty(product.slug),
-      price: Price.dirty(product.price),
-      inStock: Stock.dirty( product.stock ),
+      title: product.id == 'new' ? const Title.pure() : Title.dirty(product.title),
+      slug: product.id == 'new' ? const Slug.pure() : Slug.dirty(product.slug),
+      price: product.id == 'new' ? const Price.pure() : Price.dirty(product.price),
+      inStock: product.id == 'new' ? const Stock.pure() : Stock.dirty( product.stock ),
       sizes: product.sizes,
       gender: product.gender,
       description: product.description,
@@ -73,13 +74,18 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
 
 
   void _touchedEverything() {
+
+    final title   = Title.dirty(state.title.value);
+    final slug    = Slug.dirty(state.slug.value);
+    final price   = Price.dirty(state.price.value);
+    final inStock = Stock.dirty(state.inStock.value);
+
     state = state.copyWith(
-      isFormValid: Formz.validate([
-        Title.dirty(state.title.value),
-        Slug.dirty(state.slug.value),
-        Price.dirty(state.price.value),
-        Stock.dirty(state.inStock.value),
-      ]),
+      title: title,
+      slug: slug,
+      price: price,
+      inStock: inStock,
+      isFormValid: Formz.validate([ title, slug, price, inStock ]),
     );
   }
 
