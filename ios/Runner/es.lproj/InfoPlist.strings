@@ -1,3 +1,3 @@
-"NSPhotoLibraryUsageDescription" = "Necesitamos acceder a tu galería para seleccionar imágenes.";
-"NSCameraUsageDescription" = "Necesitamos acceder a la cámara para tomar fotografías.";
-"NSMicrophoneUsageDescription" = "Necesitamos acceder al micrófono para grabar audio.";
+"NSPhotoLibraryUsageDescription" = "Teslo Shop accede a tus fotos para que puedas añadir imágenes a tus productos.";
+"NSCameraUsageDescription" = "Teslo Shop usa la cámara para tomar fotos de tus productos.";
+"NSMicrophoneUsageDescription" = "Teslo Shop usa el micrófono cuando grabas vídeo con la cámara.";
