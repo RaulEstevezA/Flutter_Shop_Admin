@@ -5,7 +5,7 @@
 **Snapshot actualizado:** `2026-09-28`  
 **Rama:** `main`  
 **Último commit documentado:** `266da21` - "Agregar archivo InfoPlist.swift para la configuración de la lista de propiedades"  
-**Estado:** en desarrollo. Están implementados la autenticación, el catálogo, la edición de productos, el control de stock y la subida de fotos; quedan pendientes la búsqueda y el borrado de productos (ver [Trabajo Pendiente](#trabajo-pendiente)).
+**Estado:** proyecto del curso terminado, con autenticación, catálogo de productos, creación y edición de productos, control de stock y subida de fotos. El desarrollo posterior continúa en un repositorio aparte.
 
 ## Descripción General
 
@@ -200,12 +200,6 @@ Los diálogos de permisos de cámara, galería y micrófono tienen su descripci�
 |---|---|
 | iOS | Deployment target mínimo `15.0`; plugins mediante Swift Package Manager (sin CocoaPods) |
 | Android | Gradle `9.1.0`, Android Gradle Plugin `9.0.1`, Kotlin `2.3.20` con el Kotlin integrado de AGP |
-
-## Trabajo Pendiente
-
-- **Búsqueda:** el botón de la lupa del catálogo todavía no tiene acción, y `searchProductByTerm` en el datasource lanza `UnimplementedError`.
-- **Borrar productos:** todavía no hay opción de borrado.
-- **Menú lateral:** el nombre de usuario está fijo ("Tony Stark") en lugar de usar el del usuario conectado.
 
 ## Setup
 

@@ -5,7 +5,7 @@
 **Snapshot updated:** `2026-09-28`  
 **Branch:** `main`  
 **Last documented commit:** `266da21` - "Agregar archivo InfoPlist.swift para la configuración de la lista de propiedades"  
-**Status:** in development. Authentication, catalog, product editing, stock control and photo upload are implemented; product search and deletion are still pending (see [Pending Work](#pending-work)).
+**Status:** course project completed, with authentication, product catalog, product creation and editing, stock control and photo upload implemented. Further development continues in a separate repository.
 
 ## Overview
 
@@ -200,12 +200,6 @@ The camera, photo library and microphone permission prompts have their descripti
 |---|---|
 | iOS | Minimum deployment target `15.0`; plugins through Swift Package Manager (no CocoaPods) |
 | Android | Gradle `9.1.0`, Android Gradle Plugin `9.0.1`, Kotlin `2.3.20` with AGP built-in Kotlin |
-
-## Pending Work
-
-- **Search:** the magnifying-glass button in the catalog has no action yet, and `searchProductByTerm` in the datasource throws `UnimplementedError`.
-- **Delete products:** there is no delete action yet.
-- **Side menu:** the user name is hardcoded ("Tony Stark") instead of using the logged-in user.
 
 ## Setup
 
