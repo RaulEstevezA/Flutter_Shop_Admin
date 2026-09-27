@@ -46,7 +46,6 @@ class ProductsDatasourceImpl extends ProductsDatasource {
     final photosToUpload = photos.where((element) => element.contains('/') ).toList();
     final photosToIgnore = photos.where((element) => !element.contains('/') ).toList();
 
-    //Todo: crear una serie de Futures de carga de imágenes
     final List<Future<String>> uploadJob = photosToUpload.map(_uploadFile).toList();
 
     final newImages = await Future.wait(uploadJob);
