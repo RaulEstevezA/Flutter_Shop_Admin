@@ -1,5 +1,15 @@
 # Flutter Shop Admin - Full Project Overview
 
+<p align="center">
+  <a href="https://youtube.com/shorts/OQrZLijUDiA">
+    <img src="images/main.png" alt="Flutter Shop Admin video demo" width="180">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://youtube.com/shorts/OQrZLijUDiA">Watch the video demo on YouTube</a>
+</p>
+
 ## Project Status
 
 **Snapshot updated:** `2026-09-28`  
@@ -33,7 +43,7 @@ The central technical focus of the app is the **authenticated CRUD flow**: the s
 
 ## Data Source
 
-- **Backend:** [Backend - Nest RestServer (Docker)](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general)
+- **Backend:** [Flutter Shop Admin Backend](https://github.com/RaulEstevezA/Flutter_Shop_Admin_Backend)
 - **Base URL:** configured in `.env` as `API_URL` (for example `http://localhost:3000/api`)
 - **Authentication:** JWT sent in the `Authorization: Bearer <token>` header
 - **Images:** served from `{API_URL}/files/product/{image}`
@@ -203,7 +213,7 @@ The camera, photo library and microphone permission prompts have their descripti
 
 ## Setup
 
-1. Start the [backend](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general) by following its guide.
+1. Start the [backend](https://github.com/RaulEstevezA/Flutter_Shop_Admin_Backend) by following the instructions in its repository.
 2. Copy `.env.template` to `.env` and set the URL:
 
 ```env

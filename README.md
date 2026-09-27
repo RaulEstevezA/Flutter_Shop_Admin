@@ -8,6 +8,10 @@ Flutter Shop Admin is a Flutter app for managing an online store's product catal
 - 🇪🇸 **Versión en español:**  
   [Resumen completo de la app funcional (Español)](./README_es.md)
 
+<p align="center">
+  <img src="images/main.png" alt="Flutter Shop Admin product catalog" width="180">
+</p>
+
 ## Project Summary
 
 This project was built as part of Fernando Herrera's **"Flutter de Cero a Experto"** course.
@@ -40,19 +44,15 @@ The app follows a Clean Architecture approach with a clear separation between do
 - Size (XS–XXXL) and gender (men / women / kid) selectors.
 - Photos from the camera or gallery, uploaded to the backend when the product is saved.
 - Create and update products through the same endpoint flow (`POST` / `PATCH`).
-- Permission prompts localized in English and Spanish on iOS
+- Permission prompts localized in English and Spanish on iOS.
 
 ## Backend
 
-The app needs the course's REST API running:
-
-[Backend - Nest RestServer (Docker)](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general)
-
-Follow the backend guide to run it locally before starting the app.
+The app needs its REST API running. Download it and follow its instructions here: [Flutter Shop Admin Backend](https://github.com/RaulEstevezA/Flutter_Shop_Admin_Backend)
 
 ## Setup
 
-1. Start the backend.
+1. Start the [backend](https://github.com/RaulEstevezA/Flutter_Shop_Admin_Backend).
 2. Copy `.env.template` to `.env` and set the API URL:
 
 ```env
