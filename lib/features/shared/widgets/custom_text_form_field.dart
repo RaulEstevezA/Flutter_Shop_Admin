@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
   final Function(String)? onChanged;
   final Function(String)? onFieldSubmitted;
   final String? Function(String?)? validator;
+  final Iterable<String>? autofillHints;
 
   const CustomTextFormField({
     super.key, 
@@ -22,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged, 
     this.onFieldSubmitted, 
     this.validator, 
+    this.autofillHints,
   });
 
   @override
@@ -55,6 +57,7 @@ class CustomTextFormField extends StatelessWidget {
         onFieldSubmitted: onFieldSubmitted,
         obscureText: obscureText,
         keyboardType: keyboardType,
+        autofillHints: autofillHints,
         style: const TextStyle( fontSize: 20, color: Colors.black54 ),
         decoration: InputDecoration(
           floatingLabelStyle: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),

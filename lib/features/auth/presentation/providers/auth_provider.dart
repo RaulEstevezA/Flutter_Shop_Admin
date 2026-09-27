@@ -96,10 +96,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
     
     await keyValueStorageService.removeKey('token');
 
-    state = state.copyWith(
+    // copyWith no puede poner user a null (usa ??), así que se crea un estado nuevo
+    state = AuthState(
       authStatus: AuthStatus.notAuthenticated,
-      user: null,
-      errorMessage: errorMessage
+      errorMessage: errorMessage ?? ''
     );
   }
 

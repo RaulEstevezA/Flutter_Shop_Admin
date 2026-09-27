@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_shop_admin/features/auth/presentation/providers/providers.dart';
@@ -62,6 +63,14 @@ class _LoginForm extends ConsumerWidget {
   }
 
 
+  // Cierra el teclado y la sesión de autocompletado de iOS antes de cambiar de pantalla;
+  // si no, el campo de contraseña puede quedarse enganchado y bloquear el teclado del siguiente login
+  void submit( WidgetRef ref ) {
+    FocusManager.instance.primaryFocus?.unfocus();
+    TextInput.finishAutofillContext();
+    ref.read(loginFormProvider.notifier).onFormSubmit();
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
@@ -77,6 +86,7 @@ class _LoginForm extends ConsumerWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50),
+      child: AutofillGroup(
       child: Column(
         children: [
           const SizedBox( height: 50 ),
@@ -86,6 +96,7 @@ class _LoginForm extends ConsumerWidget {
           CustomTextFormField(
             label: 'Correo',
             keyboardType: TextInputType.emailAddress,
+            autofillHints: const [ AutofillHints.email ],
             onChanged: ref.read(loginFormProvider.notifier).onEmailChange,
             errorMessage: loginForm.isFormPosted ?
                loginForm.email.errorMessage 
@@ -96,8 +107,9 @@ class _LoginForm extends ConsumerWidget {
           CustomTextFormField(
             label: 'Contraseña',
             obscureText: true,
+            autofillHints: const [ AutofillHints.password ],
             onChanged: ref.read(loginFormProvider.notifier).onPasswordChanged,
-            onFieldSubmitted: ( _ ) => ref.read(loginFormProvider.notifier).onFormSubmit(),
+            onFieldSubmitted: ( _ ) => submit(ref),
             errorMessage: loginForm.isFormPosted ?
                loginForm.password.errorMessage 
                : null,
@@ -113,7 +125,7 @@ class _LoginForm extends ConsumerWidget {
               buttonColor: Colors.black,
               onPressed: loginForm.isPosting
                 ? null 
-                : ref.read(loginFormProvider.notifier).onFormSubmit
+                : () => submit(ref)
             )
           ),
 
@@ -132,6 +144,7 @@ class _LoginForm extends ConsumerWidget {
 
           const Spacer( flex: 1),
         ],
+      ),
       ),
     );
   }

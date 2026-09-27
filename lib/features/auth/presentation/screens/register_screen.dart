@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_shop_admin/features/auth/presentation/providers/providers.dart';
@@ -73,6 +74,13 @@ class _RegisterForm extends ConsumerWidget {
   }
 
 
+  // Igual que en el login: cerrar teclado y autocompletado antes de cambiar de pantalla
+  void submit( WidgetRef ref ) {
+    FocusManager.instance.primaryFocus?.unfocus();
+    TextInput.finishAutofillContext();
+    ref.read(registerFormProvider.notifier).onFormSubmit();
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
@@ -88,6 +96,7 @@ class _RegisterForm extends ConsumerWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50),
+      child: AutofillGroup(
       child: Column(
         children: [
           // const SizedBox( height: 50 ),
@@ -99,6 +108,7 @@ class _RegisterForm extends ConsumerWidget {
           CustomTextFormField(
             label: 'Nombre completo',
             keyboardType: TextInputType.name,
+            autofillHints: const [ AutofillHints.name ],
             onChanged: ref.read(registerFormProvider.notifier).onFullNameChanged,
             errorMessage: registerForm.isFormPosted ?
                registerForm.fullName.errorMessage 
@@ -109,6 +119,7 @@ class _RegisterForm extends ConsumerWidget {
           CustomTextFormField(
             label: 'Correo',
             keyboardType: TextInputType.emailAddress,
+            autofillHints: const [ AutofillHints.email ],
             onChanged: ref.read(registerFormProvider.notifier).onEmailChange,
             errorMessage: registerForm.isFormPosted ?
                registerForm.email.errorMessage 
@@ -119,6 +130,7 @@ class _RegisterForm extends ConsumerWidget {
           CustomTextFormField(
             label: 'Contraseña',
             obscureText: true,
+            autofillHints: const [ AutofillHints.newPassword ],
             onChanged: ref.read(registerFormProvider.notifier).onPasswordChanged,
             errorMessage: registerForm.isFormPosted ?
                registerForm.password.errorMessage 
@@ -130,6 +142,7 @@ class _RegisterForm extends ConsumerWidget {
           CustomTextFormField(
             label: 'Repita la contraseña',
             obscureText: true,
+            autofillHints: const [ AutofillHints.newPassword ],
             onChanged: ref.read(registerFormProvider.notifier).onConfirmedPasswordChanged,
             errorMessage: registerForm.isFormPosted ?
                registerForm.confirmedPassword.errorMessage 
@@ -146,7 +159,7 @@ class _RegisterForm extends ConsumerWidget {
               buttonColor: Colors.black,
               onPressed: registerForm.isPosting
                 ? null
-                : ref.read(registerFormProvider.notifier).onFormSubmit,
+                : () => submit(ref),
             )
           ),
 
@@ -171,6 +184,7 @@ class _RegisterForm extends ConsumerWidget {
 
           const Spacer( flex: 1),
         ],
+      ),
       ),
     );
   }
