@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:teslo_shop/features/products/domain/domain.dart';
 import 'package:teslo_shop/features/products/presentation/providers/providers.dart';
 import 'package:teslo_shop/features/shared/shared.dart';
@@ -11,10 +12,10 @@ class ProductScreen extends ConsumerWidget {
 
   const ProductScreen({super.key, required this.productId});
 
-  void showSnackbar( BuildContext context ) {
+  void showSnackbar( BuildContext context, String message ) {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Producto Actualizado'))
+      SnackBar(content: Text(message))
     );
   }
 
@@ -22,12 +23,13 @@ class ProductScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     
     final productState = ref.watch( productProvider(productId) );
+    final isNewProduct = productId == 'new';
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Editar Producto'),
+          title: Text( isNewProduct ? 'Nuevo producto' : 'Editar Producto' ),
           actions: [
 
             IconButton(onPressed: () async {
@@ -62,8 +64,13 @@ class ProductScreen extends ConsumerWidget {
               productFormProvider(productState.product!).notifier
             ).onFormSubmit()
               .then((value) {
-                if ( !value ) return;
-                showSnackbar(context);
+                if ( !value || !context.mounted ) return;
+
+                if ( !isNewProduct ) return showSnackbar(context, 'Producto actualizado');
+
+                // Al crear se vuelve al catálogo para no enviar otro POST si se pulsa guardar de nuevo
+                showSnackbar(context, 'Producto creado');
+                context.canPop() ? context.pop() : context.go('/');
               });
     
             
@@ -151,7 +158,7 @@ class _ProductInformation extends ConsumerWidget {
             isBottomField: true,
             label: 'Precio',
             keyboardType: const TextInputType.numberWithOptions(decimal: true),
-            initialValue: productForm.price.value.toString(),
+            initialValue: product.id == 'new' ? '' : productForm.price.value.toString(),
             onChanged: (value) 
               => ref.read( productFormProvider(product).notifier)
                 .onPriceChanged( double.tryParse(value) ?? -1 ),
