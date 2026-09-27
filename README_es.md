@@ -1,4 +1,4 @@
-# Teslo Shop - Resumen completo del proyecto
+# Flutter Shop Admin - Resumen completo del proyecto
 
 ## Estado del Proyecto
 
@@ -9,7 +9,7 @@
 
 ## Descripción General
 
-Teslo Shop es una aplicación Flutter para gestionar el catálogo y el stock de una tienda online. Consume una API REST hecha con NestJS y protegida con JWT, usa Clean Architecture, Riverpod como gestor de estado y Go Router para la navegación, con redirecciones según el estado de autenticación.
+Flutter Shop Admin es una aplicación Flutter para gestionar el catálogo y el stock de una tienda online. Consume una API REST hecha con NestJS y protegida con JWT, usa Clean Architecture, Riverpod como gestor de estado y Go Router para la navegación, con redirecciones según el estado de autenticación.
 
 La parte técnica central de la app es el **CRUD autenticado**: el token de sesión se obtiene al hacer login, se guarda con `shared_preferences`, se vuelve a comprobar al arrancar y se envía en cada petición de productos. Los datos viajan de la API a la UI a través de datasources, mappers y repositorios, y de vuelta desde un formulario validado hacia la API, subiendo las fotos locales antes de guardar el producto.
 
@@ -33,7 +33,7 @@ La parte técnica central de la app es el **CRUD autenticado**: el token de sesi
 
 ## Fuente de Datos
 
-- **Backend:** [Teslo Backend - Nest RestServer](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general)
+- **Backend:** [Backend - Nest RestServer (Docker)](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general)
 - **Base URL:** configurada en `.env` como `API_URL` (por ejemplo `http://localhost:3000/api`)
 - **Autenticación:** JWT enviado en la cabecera `Authorization: Bearer <token>`
 - **Imágenes:** servidas desde `{API_URL}/files/product/{imagen}`
@@ -209,7 +209,7 @@ Los diálogos de permisos de cámara, galería y micrófono tienen su descripci�
 
 ## Setup
 
-1. Arranca el [backend de Teslo](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general) siguiendo su guía.
+1. Arranca el [backend](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general) siguiendo su guía.
 2. Copia `.env.template` a `.env` y configura la URL:
 
 ```env

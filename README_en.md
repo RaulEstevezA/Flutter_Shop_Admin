@@ -1,4 +1,4 @@
-# Teslo Shop - Full Project Overview
+# Flutter Shop Admin - Full Project Overview
 
 ## Project Status
 
@@ -9,7 +9,7 @@
 
 ## Overview
 
-Teslo Shop is a Flutter app for managing an online store's product catalog and stock. It consumes a NestJS REST API protected with JWT, uses Clean Architecture, Riverpod for state management and Go Router for navigation with authentication-based redirects.
+Flutter Shop Admin is a Flutter app for managing an online store's product catalog and stock. It consumes a NestJS REST API protected with JWT, uses Clean Architecture, Riverpod for state management and Go Router for navigation with authentication-based redirects.
 
 The central technical focus of the app is the **authenticated CRUD flow**: the session token is obtained at login, persisted with `shared_preferences`, checked again at startup and injected into every product request. Product data travels from the API to the UI through datasources, mappers and repositories, and back from a validated form to the API, uploading local photos before saving the product.
 
@@ -33,7 +33,7 @@ The central technical focus of the app is the **authenticated CRUD flow**: the s
 
 ## Data Source
 
-- **Backend:** [Teslo Backend - Nest RestServer](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general)
+- **Backend:** [Backend - Nest RestServer (Docker)](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general)
 - **Base URL:** configured in `.env` as `API_URL` (for example `http://localhost:3000/api`)
 - **Authentication:** JWT sent in the `Authorization: Bearer <token>` header
 - **Images:** served from `{API_URL}/files/product/{image}`
@@ -209,7 +209,7 @@ The camera, photo library and microphone permission prompts have their descripti
 
 ## Setup
 
-1. Start the [Teslo backend](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general) by following its guide.
+1. Start the [backend](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general) by following its guide.
 2. Copy `.env.template` to `.env` and set the URL:
 
 ```env

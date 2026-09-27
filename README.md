@@ -1,6 +1,6 @@
-# Teslo Shop
+# Flutter Shop Admin
 
-Teslo Shop is a Flutter app for managing an online store's product catalog and **stock**. Authenticated users can browse the inventory, edit each product's details, update available units and attach photos taken with the camera or picked from the gallery. All data is stored in a REST backend built with NestJS.
+Flutter Shop Admin is a Flutter app for managing an online store's product catalog and **stock**. Authenticated users can browse the inventory, edit each product's details, update available units and attach photos taken with the camera or picked from the gallery. All data is stored in a REST backend built with NestJS.
 
 - 🇬🇧 **English version:**  
   [Full functional app overview (English)](./README_en.md)
@@ -44,9 +44,9 @@ The app follows a Clean Architecture approach with a clear separation between do
 
 ## Backend
 
-The app needs the Teslo Shop REST API running:
+The app needs the course's REST API running:
 
-[Teslo Backend - Nest RestServer](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general)
+[Backend - Nest RestServer (Docker)](https://hub.docker.com/repository/docker/klerith/flutter-backend-teslo-shop/general)
 
 Follow the backend guide to run it locally before starting the app.
 
