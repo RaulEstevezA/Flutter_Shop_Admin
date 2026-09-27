@@ -1,6 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:teslo_shop/features/products/domain/domain.dart';
 import 'package:teslo_shop/features/products/presentation/providers/providers.dart';
 import 'package:teslo_shop/features/shared/shared.dart';
@@ -18,7 +18,6 @@ class ProductScreen extends ConsumerWidget {
     );
   }
 
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     
@@ -30,8 +29,23 @@ class ProductScreen extends ConsumerWidget {
         appBar: AppBar(
           title: const Text('Editar Producto'),
           actions: [
-            IconButton(onPressed: () {
+
+            IconButton(onPressed: () async {
+              final photoPath = await CameraGalleryServiceImpl().selectPhoto();
+              if ( photoPath == null ) return;
+
+              ref.read( productFormProvider(productState.product!).notifier )
+                .updateProductImage(photoPath);
     
+            }, 
+            icon: const Icon( Icons.photo_library_outlined )),
+
+            IconButton(onPressed: () async{
+              final photoPath = await CameraGalleryServiceImpl().takePhoto();
+              if ( photoPath == null ) return;
+
+              ref.read( productFormProvider(productState.product!).notifier )
+                .updateProductImage(photoPath);
             }, 
             icon: const Icon( Icons.camera_alt_outlined ))
           ],
@@ -110,6 +124,7 @@ class _ProductInformation extends ConsumerWidget {
 
     final productForm = ref.watch( productFormProvider(product) );
 
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -186,7 +201,6 @@ class _ProductInformation extends ConsumerWidget {
             onChanged: ref.read( productFormProvider(product).notifier).onTagsChanged,
           ),
 
-
           const SizedBox(height: 100 ),
         ],
       ),
@@ -205,7 +219,6 @@ class _SizeSelector extends StatelessWidget {
     required this.selectedSizes,
     required this.onSizesChanged,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -228,12 +241,10 @@ class _SizeSelector extends StatelessWidget {
   }
 }
 
-
 class _GenderSelector extends StatelessWidget {
   
   final String selectedGender;
   final void Function( String selectedGender) onGenderChanged;
-
 
   final List<String> genders = const['men','women','kid'];
   final List<IconData> genderIcons = const[
@@ -246,7 +257,6 @@ class _GenderSelector extends StatelessWidget {
     required this.selectedGender, 
     required this.onGenderChanged
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -280,20 +290,37 @@ class _ImageGallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    if ( images.isEmpty ) {
+      return ClipRRect(
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        child: Image.asset('assets/images/no-image.jpg', fit: BoxFit.cover )
+      );
+    }
+
     return PageView(
       scrollDirection: Axis.horizontal,
       controller: PageController(
         viewportFraction: 0.7
       ),
-      children: images.isEmpty
-        ? [ ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            child: Image.asset('assets/images/no-image.jpg', fit: BoxFit.cover )) 
-        ]
-        : images.map((e){
-          return ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(20)),
-            child: Image.network(e, fit: BoxFit.cover,),
+      children: images.map((image){
+          
+        late ImageProvider imageProvider;
+        if ( image.startsWith('http') ) {
+          imageProvider = NetworkImage(image);
+        } else {
+          imageProvider = FileImage( File(image) );
+        }
+
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(20)),
+              child: FadeInImage(
+                fit: BoxFit.cover,
+                image: imageProvider,
+                placeholder: const AssetImage('assets/loaders/bottle-loader.gif'),
+              )
+            ),
           );
       }).toList(),
     );
