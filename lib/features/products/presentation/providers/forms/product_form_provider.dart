@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
-
 import 'package:teslo_shop/config/constants/environment.dart';
 import 'package:teslo_shop/features/products/domain/domain.dart';
 import 'package:teslo_shop/features/products/presentation/providers/providers.dart';
@@ -43,7 +42,6 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
     )
   );
 
-
   Future<bool> onFormSubmit() async {
     _touchedEverything();
     if ( !state.isFormValid ) return false;
@@ -85,6 +83,13 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
       ]),
     );
   }
+
+  void updateProductImage( String path ) {
+    state = state.copyWith(
+      images: [...state.images, path ]
+    );
+  }
+
 
   void onTitleChanged( String value ) {
     state = state.copyWith(
@@ -214,6 +219,4 @@ class ProductFormState {
     tags: tags ?? this.tags,
     images: images ?? this.images,
   );
-
-
 }
