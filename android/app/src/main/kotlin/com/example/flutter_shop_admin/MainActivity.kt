@@ -1,4 +1,4 @@
-package com.example.teslo_shop
+package com.example.flutter_shop_admin
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,6 @@
-import 'package:teslo_shop/config/config.dart';
-import 'package:teslo_shop/features/auth/infrastructure/infrastructure.dart';
-import 'package:teslo_shop/features/products/domain/domain.dart';
+import 'package:flutter_shop_admin/config/config.dart';
+import 'package:flutter_shop_admin/features/auth/infrastructure/infrastructure.dart';
+import 'package:flutter_shop_admin/features/products/domain/domain.dart';
 
 
 class ProductMapper {

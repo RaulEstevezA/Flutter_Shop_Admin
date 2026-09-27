@@ -1,5 +1,5 @@
-import 'package:teslo_shop/features/auth/presentation/providers/auth_provider.dart';
-import 'package:teslo_shop/features/shared/shared.dart';
+import 'package:flutter_shop_admin/features/auth/presentation/providers/auth_provider.dart';
+import 'package:flutter_shop_admin/features/shared/shared.dart';
 import 'package:formz/formz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

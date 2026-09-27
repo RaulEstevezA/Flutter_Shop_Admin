@@ -1,4 +1,4 @@
-import 'package:teslo_shop/features/auth/domain/domain.dart';
+import 'package:flutter_shop_admin/features/auth/domain/domain.dart';
 
 class Product {
   String id;

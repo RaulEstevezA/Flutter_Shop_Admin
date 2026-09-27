@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teslo_shop/features/products/domain/domain.dart';
+import 'package:flutter_shop_admin/features/products/domain/domain.dart';
 
 
 class ProductCard extends StatelessWidget {

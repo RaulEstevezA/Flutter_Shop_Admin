@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:teslo_shop/features/shared/infrastructure/services/key_value_storage_service.dart';
+import 'package:flutter_shop_admin/features/shared/infrastructure/services/key_value_storage_service.dart';
 
 
 class KeyValueStorageServiceImpl extends KeyValueStorageService {

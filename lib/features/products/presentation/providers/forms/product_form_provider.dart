@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
-import 'package:teslo_shop/config/constants/environment.dart';
-import 'package:teslo_shop/features/products/domain/domain.dart';
-import 'package:teslo_shop/features/products/presentation/providers/providers.dart';
-import 'package:teslo_shop/features/shared/shared.dart';
+import 'package:flutter_shop_admin/config/constants/environment.dart';
+import 'package:flutter_shop_admin/features/products/domain/domain.dart';
+import 'package:flutter_shop_admin/features/products/presentation/providers/providers.dart';
+import 'package:flutter_shop_admin/features/shared/shared.dart';
 
 
 final productFormProvider = StateNotifierProvider.autoDispose.family<ProductFormNotifier, ProductFormState, Product>(

@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Teslo Shop</string>
+	<string>Flutter Shop Admin</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,7 +20,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>teslo_shop</string>
+	<string>flutter_shop_admin</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -32,11 +32,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Teslo Shop uses the camera to take photos of your products.</string>
+	<string>Flutter Shop Admin uses the camera to take photos of your products.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Teslo Shop uses the microphone when you record video with the camera.</string>
+	<string>Flutter Shop Admin uses the microphone when you record video with the camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Teslo Shop accesses your photos so you can add images to your products.</string>
+	<string>Flutter Shop Admin accesses your photos so you can add images to your products.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

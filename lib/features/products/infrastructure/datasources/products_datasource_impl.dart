@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:teslo_shop/config/config.dart';
-import 'package:teslo_shop/features/products/domain/domain.dart';
+import 'package:flutter_shop_admin/config/config.dart';
+import 'package:flutter_shop_admin/features/products/domain/domain.dart';
 import '../errors/product_errors.dart';
 import '../mappers/product_mapper.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:teslo_shop/features/products/domain/domain.dart';
+import 'package:flutter_shop_admin/features/products/domain/domain.dart';
 
 import 'products_repository_provider.dart';
 

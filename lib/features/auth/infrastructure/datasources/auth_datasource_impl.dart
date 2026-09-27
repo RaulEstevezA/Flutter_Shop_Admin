@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:teslo_shop/config/config.dart';
-import 'package:teslo_shop/features/auth/domain/domain.dart';
-import 'package:teslo_shop/features/auth/infrastructure/infrastructure.dart';
+import 'package:flutter_shop_admin/config/config.dart';
+import 'package:flutter_shop_admin/features/auth/domain/domain.dart';
+import 'package:flutter_shop_admin/features/auth/infrastructure/infrastructure.dart';
 
 class AuthDataSourceImpl extends AuthDataSource {
 
