@@ -40,7 +40,7 @@ The app follows a Clean Architecture approach with a clear separation between do
 - Size (XS–XXXL) and gender (men / women / kid) selectors.
 - Photos from the camera or gallery, uploaded to the backend when the product is saved.
 - Create and update products through the same endpoint flow (`POST` / `PATCH`).
-- Permission prompts localized in English and Spanish on iOS.
+- Permission prompts localized in English and Spanish on iOS
 
 ## Backend
 
